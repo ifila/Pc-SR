@@ -1,0 +1,72 @@
+{
+  "tree": {
+    "base_depth": 10,
+    "min_samples_per_leaf": 50,
+    "max_points": 15,
+    "random_state": 42
+  },
+  "pysr": {
+    "niterations": 50,
+    "maxsize": 10,
+    "deterministic": true,
+    "parallelism": "serial",
+    "random_state": 12345,
+    "binary_operators": [
+      "+",
+      "-",
+      "*",
+      "/"
+    ],
+    "unary_operators": [
+      "sin",
+      "cos",
+      "log",
+      "sqrt",
+      "abs"
+    ],
+    "nested_constraints": {
+      "sin": {
+        "sin": 0,
+        "cos": 0
+      },
+      "cos": {
+        "cos": 0,
+        "sin": 0
+      },
+      "sqrt": {
+        "sqrt": 0
+      },
+      "log": {
+        "log": 0
+      }
+    },
+    "verbosity": 0,
+    "progress": false,
+    "output_directory": "pysr_runs",
+    "run_id_prefix": "leafrun",
+    "keep_runs": false,
+    "keep_on_error": false
+  },
+  "score": {
+    "w": [
+      0.5,
+      0.3,
+      0.2
+    ],
+    "cvar_beta": 0.95,
+    "lp_p": 4,
+    "tol_select": 0.05,
+    "eps_close_best": 0.0,
+    "robust_percentile": 0.0
+  },
+  "out": {
+    "outdir": "outputs\\my_run",
+    "save_tree_png": false,
+    "save_tree_text": false,
+    "save_leaf_csv": false,
+    "save_preds_csv": false,
+    "verbose": "INFO"
+  },
+  "val_frac": null,
+  "n_jobs": 6
+}

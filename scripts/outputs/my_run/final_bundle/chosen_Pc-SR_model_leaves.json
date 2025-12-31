@@ -1,0 +1,41 @@
+{
+  "feature_names": [
+    "x1",
+    "x2",
+    "x3",
+    "x4",
+    "x5",
+    "x6"
+  ],
+  "notes": "Per-leaf PySR equations for the chosen pruned tree.",
+  "leaves": [
+    {
+      "leaf_id": 2,
+      "n": 403,
+      "complexity": 6,
+      "mse_val": 0.0026349198563881205,
+      "equation": "sin(x3) + (x2 * 1.9978116)"
+    },
+    {
+      "leaf_id": 3,
+      "n": 314,
+      "complexity": 6,
+      "mse_val": 0.002846725592270795,
+      "equation": "(x2 * 2.0022318) + sin(x3)"
+    },
+    {
+      "leaf_id": 5,
+      "n": 408,
+      "complexity": 4,
+      "mse_val": 0.0025355494556201195,
+      "equation": "log(x2) * x4"
+    },
+    {
+      "leaf_id": 6,
+      "n": 375,
+      "complexity": 5,
+      "mse_val": 0.0030260559965853678,
+      "equation": "sqrt(abs(x3 - x5))"
+    }
+  ]
+}

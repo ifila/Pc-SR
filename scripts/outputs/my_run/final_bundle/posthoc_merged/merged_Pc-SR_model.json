@@ -1,0 +1,34 @@
+{
+  "feature_names": [
+    "x1",
+    "x2",
+    "x3",
+    "x4",
+    "x5",
+    "x6"
+  ],
+  "notes": "Post-hoc merged clusters with retrained PySR models.",
+  "mapping_init_to_final": {
+    "1": 0,
+    "2": 2,
+    "0": 0,
+    "3": 3
+  },
+  "clusters": [
+    {
+      "final_cluster_id": 0,
+      "n": 717,
+      "equation": "(x2 * 2.0015364) + sin(x3)"
+    },
+    {
+      "final_cluster_id": 2,
+      "n": 408,
+      "equation": "log(x2) * x4"
+    },
+    {
+      "final_cluster_id": 3,
+      "n": 375,
+      "equation": "sqrt(abs(x3 - x5))"
+    }
+  ]
+}

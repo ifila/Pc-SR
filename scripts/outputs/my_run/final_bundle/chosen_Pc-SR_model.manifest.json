@@ -1,0 +1,7 @@
+{
+  "tree_path": "outputs\\my_run\\final_bundle\\chosen_Pc-SR_model_tree.joblib",
+  "leaves_json": "outputs\\my_run\\final_bundle\\chosen_Pc-SR_model_leaves.json",
+  "leaves_csv": "outputs\\my_run\\final_bundle\\chosen_Pc-SR_model_leaves.csv",
+  "config_json": "outputs\\my_run\\final_bundle\\chosen_Pc-SR_model_config.json",
+  "note": "Leaf callables are NOT serialized; rebuild from JSON when needed."
+}
