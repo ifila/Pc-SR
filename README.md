@@ -2,7 +2,7 @@
 
 This repo contains a two-stage pipeline:
 
-- **Stage-1:** CART (Decision Tree) pruning + per-leaf PySR, alpha selection, and bundle save.
+- **Stage-1:** CART (Decision Tree Regressor) pruning + per-leaf PySR, alpha selection, and bundle save.
 - **Stage-2 (optional):** Post-hoc merging of similar leaves via text embeddings + numeric/structural checks, with retraining on merged clusters.
 
 ---
@@ -12,7 +12,7 @@ This repo contains a two-stage pipeline:
 pcsr/
 init.py # re-exports public API
 DTR_ccp_a_prune_SR_stage1.py # Stage-1 (alpha sweep, per-leaf SR, selection, bundle save)
-posthoc_merge.py # Stage-2 (embeddings + numeric checks + retrain on merges)
+posthoc_merge.py # Stage-2 (embeddings + numeric/structural checks + retrain on merges)
 
 scripts/
 run_pipeline.py # ENTRY POINT – edit paths/settings here and run
@@ -35,19 +35,15 @@ python -m venv .venv
 
 # Windows
 .venv\Scripts\activate
+```
 
-# macOS/Linux
-source .venv/bin/activate
 
-### 
 
-2) **Install dependencies**
-Install dependencies
+### 2) Install dependencies
 
 pip install -r requirements.txt
-Set your dataset path
 
-Open scripts/run_pipeline.py.
+### 3) Set your dataset path --> Open scripts/run_pipeline.py.
 
 Edit the USER SETTINGS at the top:
 
@@ -63,18 +59,18 @@ Choose output dir with OUTDIR.
 
 Toggle Stage-2 merging with DO_MERGE = True/False.
 
-Run
 
-In your IDE: right-click scripts/run_pipeline.py → Run.
+---
 
-Or from terminal:
+### 4) Run
 
-bash
-Copy code
-python scripts/run_pipeline.py
+--In your IDE: right-click scripts/run_pipeline.py → Run.
+
+--Or from terminal: python scripts/run_pipeline.py
+
 Artifacts will be written under OUTDIR (default outputs/).
 
-What Stage-1 Saves
+### What Stage-1 Saves
 Inside OUTDIR/final_bundle/:
 
 chosen_Pc-SR_model_tree.joblib – the selected pruned DecisionTreeRegressor
@@ -95,7 +91,7 @@ alpha_summary_raw.csv, alpha_summary.csv (normalized)
 
 optional tree PNGs, leaf CSVs, and prediction CSVs
 
-Stage-2 (Optional): Post-hoc Merge
+### Stage-2 (Optional): Post-hoc Merge
 If DO_MERGE = True, Stage-2 will:
 
 initialize clusters from Stage-1 leaves,
@@ -112,7 +108,7 @@ Saves to OUTDIR/final_bundle/posthoc_merged/:
 
 merged_Pc-SR_model.json – final cluster equations + initial→final mapping
 
-Key Flags (where to tweak)
+### Key Flags (where to tweak)
 Stage-1 (in DTR_ccp_a_prune_SR_stage1.py, via Config)
 cfg.tree
 
@@ -152,13 +148,13 @@ save_tree_png, save_tree_text, save_leaf_csv, save_preds_csv – extra artifacts
 
 verbose – "QUIET" | "INFO" | "DEBUG"
 
-Orchestration
+### Orchestration
 
 val_frac=None – train MSE only; set to e.g. 0.2 for per-leaf train/val
 
 n_jobs – joblib workers for parallel per-leaf fits (keep moderate on Windows)
 
-Stage-2 (in run_pipeline.py and used by posthoc_merge.py)
+### Stage-2 (in run_pipeline.py and used by posthoc_merge.py)
 STRICT_SIM – cosine similarity to auto-merge (e.g., 0.90)
 
 LOOSE_SIM – if above this but below strict, do numeric cross-MSE test (e.g., 0.80)
@@ -169,7 +165,7 @@ MAX_ITERS – max merge iterations
 
 (advanced) EMBEDDER_MODEL – sentence-transformer name (default all-MiniLM-L6-v2)
 
-Requirements
+### Requirements
 Python 3.10
 
 See requirements.txt for exact versions. Core libs:
@@ -186,13 +182,10 @@ Troubleshooting
 ModuleNotFoundError: pcsr
 Run scripts/run_pipeline.py from the repo root so Python can find the pcsr/ package. In PyCharm, set the Working Directory to the project root in your Run Configuration.
 
-Torch / SentenceTransformer install issues
-Use the provided requirements.txt. On macOS ARM, wheels sometimes lag—install via pip first; if it fails, try conda to set up pytorch/cpuonly then pip install sentence-transformers.
 
-License & Attribution
+
+
 Author: Ifigeneia Lamprianidou
 
-If you use this code in academic work, please cite your thesis/paper and acknowledge this repository.
+If you use this code in academic work, please cite {remember to include the paper once it is accepted).
 
-perl
-Copy code
