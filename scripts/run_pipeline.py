@@ -14,7 +14,7 @@ from pcsr import (
 from pcsr.posthoc_merge import run_posthoc_merging
 
 # ===== USER SETTINGS (edit these) ============================================
-DATA_PATH   = r"C:\Users\mib20154\PycharmProjects\Symbolic_Regression_PySR\Piecewise symbolic regression with DTR\Synthetic dataset validation - modular version\data\synthetic_dataset.csv"   # <-- put your CSV here
+DATA_PATH   = r"data/synthetic_dataset.csv"        # <-- put your CSV here
 TARGET_COL  = "y"                                  # name of your target column
 FEATURES    = None                                   # None = use all non-target columns, or list like ["d1","d2",...]
 DROP_COLS   = []                                     # optional list of columns to drop before FEATURES selection
