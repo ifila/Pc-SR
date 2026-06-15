@@ -7,6 +7,12 @@ This repo contains a two-stage pipeline:
 
 ---
 
+# Repository Migration Notice
+
+The active development and maintenance of this software have been transferred to the official INESC TEC repository:
+
+https://github.com/INESCTEC/pcsr-modular-demo
+
 ## Structure
 
 pcsr/
